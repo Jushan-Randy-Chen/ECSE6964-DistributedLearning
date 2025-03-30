@@ -1,0 +1,4 @@
+Number of workers: 16
+Topologies: ring, all, exponential
+Topology change interval: 50
+Distributed on-average stability: 0.000000
