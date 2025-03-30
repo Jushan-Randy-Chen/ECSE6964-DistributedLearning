@@ -98,7 +98,7 @@ def plot_combined_metrics(run_data, output_dir='plots'):
             plt.title(f'{var} - {network} on {dataset}')
             plt.xlabel('Step')
             plt.ylabel(var)
-            plt.xlim(0, 2500)  # Limit x-axis to 2500 steps
+            plt.xlim(0, 600)  # Limit x-axis to 2500 steps
             plt.grid(True)
             plt.legend()
             plt.tight_layout()
@@ -155,7 +155,7 @@ def plot_individual_runs(run_data, output_dir='plots'):
                 ax.plot(steps, values, label=var)
                 ax.set_title(var)
                 ax.set_xlabel('Step')
-                ax.set_xlim(0, 2500)  # Limit x-axis to 2500 steps
+                ax.set_xlim(0, 600)  # Limit x-axis to 2500 steps
                 ax.grid(True)
                 ax.legend()
         
@@ -176,7 +176,7 @@ def plot_individual_runs(run_data, output_dir='plots'):
                 plt.plot(steps, values, label=var)
                 plt.title(f'{var} - {network} on {dataset} ({topology} topology)')
                 plt.xlabel('Step')
-                plt.xlim(0, 2500)  # Limit x-axis to 2500 steps
+                plt.xlim(0, 600)  # Limit x-axis to 2500 steps
                 plt.grid(True)
                 plt.legend()
                 plt.tight_layout()
