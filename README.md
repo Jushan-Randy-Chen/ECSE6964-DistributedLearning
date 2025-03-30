@@ -1,5 +1,5 @@
 # Final project for ECSE 6964 Distributed Optimization and Learning at Rensselaer Polytechnic Institute
-This repository is adapted from the official code implementation for the paper [ICML 2022] Generalization of Decentralized SGD. 
+This repository is adapted from the official code implementation for the paper [ICML 2022] Generalization of Decentralized SGD (https://github.com/Raiden-Zhu/Generalization-of-DSGD). 
 In this project, we extend the original paper to the time-varying communication topology.
 
 ## [ICML 2022] Generalization of Decentralized SGD
