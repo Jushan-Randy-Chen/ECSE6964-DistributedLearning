@@ -34,7 +34,7 @@ def run(num_epoch, model_name, dataset_name, mode, size,
     topology = kwargs.get('topology')  # Get topology type, default to 'all' if not specified
     # consensus_tolerance = kwargs.get('consensus_tolerance', 1e-4)  # Get consensus tolerance
     # max_consensus_iterations = num_epoch  # Maximum iterations for ADMM consensus
-    time_varying = kwargs.get('time_varying', False)  # Whether to use time-varying graphs
+    time_varying = kwargs.get('time_varying', True)  # Whether to use time-varying graphs
     topology_change_interval = kwargs.get('topology_change_interval', 50)  # How often to change topology
     available_topologies = kwargs.get('available_topologies', ['ring','all' ,'exponential'])  # Available topologies for time-varying D-SGD
     
@@ -42,7 +42,7 @@ def run(num_epoch, model_name, dataset_name, mode, size,
     if time_varying and not use_admm:
         algorithm = "TV-D-SGD"  # Time-varying D-SGD
         topology = "time_varying"
-        
+    
     run_name = f"{seed}_{model_name}_{dataset_name}_{algorithm}_{topology}_{batch_size}_{lr}_{size}"
     tb = SummaryWriter(comment=run_name)
     print(f'Running {algorithm} with {topology} topology')
@@ -202,6 +202,7 @@ def run(num_epoch, model_name, dataset_name, mode, size,
                 if time_varying and total_step % topology_change_interval == 0:
                     # Deterministic cycling through topologies
                     topology_index = (total_step // topology_change_interval) % len(available_topologies)
+                    # topology_index = np.random.choice(len(available_topologies))
                     current_topology = available_topologies[topology_index]
                     
                     # Use Metropolis weights for the new topology

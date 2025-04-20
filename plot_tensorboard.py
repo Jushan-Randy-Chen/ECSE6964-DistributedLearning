@@ -11,7 +11,7 @@ def extract_run_info(log_dir):
     parts = run_name.split('_')
     
     # Complete naming convention: Date_Time_ComputerName_Network_Dataset_Algorithm_Topology_Parameters
-    # Example: Mar17_19-27-16_RANDY-DESKTOP777_ResNet18_CIFAR10_C-ADMM_ring_64_0.4_64
+    # Example: Mar17_19-27-16_RANDY-DESKTOP777_ResNet18_CIFAR10_D-SGD_ring_64_0.4_64
     
     # Parts indexing is 0-based, so adjust accordingly
     network = parts[3] if len(parts) > 3 else "Unknown"
@@ -214,6 +214,7 @@ if __name__ == '__main__':
     # Load data from all run directories
     run_data = {}
     for run_dir in run_dirs:
+        print(run_dir)
         ea = load_tensorboard_data(run_dir)
         if ea:
             network, dataset, topology, algorithm = extract_run_info(run_dir)
